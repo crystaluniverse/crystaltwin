@@ -34,6 +34,8 @@ dependencies:
     github: crystaluniverse/mnemonic.cr
   swagger:
     github: icyleaf/swagger
+  graphql-crystal:
+    github: ziprandom/graphql-crystal
 
 crystal: 0.35.1
 
