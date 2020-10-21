@@ -1,0 +1,39 @@
+id : 0
+info:
+  tid: ''
+  full_name: Owen Kemp
+  countries:
+    - Austria
+  cities:
+    - Vienna
+  comment: ''
+  aliases: []
+  tags: ''
+  description: ''
+  remarks: ''
+contactinfo:
+  email: ''
+  tel: ''
+  telegram: ''
+  skype: ''
+address:
+  city: ''
+  housenr: ''
+  postalcode: ''
+  country: ''
+links:
+  linkedin: 'https://www.linkedin.com/in/aaaaa/'
+  websites:
+    - 'https://www.artichoke-computing.com/#'
+  facebook: ''
+  telegram: ''
+profile:
+  intro_video: ''
+  intro_text_purpose: |
+        this is a multi line text
+        can be used to describe profile from human perspective
+        optional: can be part of the profile.md file
+        
+  intro_text_experience: |
+        optional experience...
+        can be part of the profile.md file

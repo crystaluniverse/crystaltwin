@@ -1,0 +1,1 @@
+class CrystalTwin::Config; end

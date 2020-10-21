@@ -1,0 +1,19 @@
+info:
+  tid: ''
+  name: ''
+  title: Title of a site
+  aliases: []
+  tags: []
+links:
+  linkedin: ''
+  websites: []
+  facebook: ''
+  telegram: ''
+
+topic_ids:
+      - 'kristof.3bot:mytopic1'
+
+filter:
+  include:
+    - 'kristof.3bot:ourambassadors.vienna'
+  exclude: []

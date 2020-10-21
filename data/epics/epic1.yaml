@@ -1,0 +1,22 @@
+info:
+  tid: ''
+  uid: ''
+  title: This is the name of a circle
+  type: ''
+  tags: ''
+links:
+  linkedin: ''
+  websites: []
+  facebook: ''
+  telegram: ''
+profile:
+  intro_video: ''
+  intro_text_purpose: |2-
+        this is a multi line text
+        can be used to describe profile from human perspective
+        optional: can be part of the profile.md file
+        
+  intro_text_experience: |2-
+        optional experience...
+        can be part of the profile.md file
+        

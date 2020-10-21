@@ -1,0 +1,40 @@
+name: crystaltwin
+version: 0.1.0
+
+authors:
+  - hamdy <hamdy.a.farag@gmail.com>
+
+targets:
+  crystaltwin:
+    main: src/crystaltwin.cr
+
+dependencies:
+  spec-kemal:
+    github: kemalcr/spec-kemal
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+  crystalstore:
+    github: crystaluniverse/crystalstore
+  threebot:
+    github: crystaluniverse/kemal-threebot
+  kemal-session-bcdb:
+    github: crystaluniverse/kemal-session-bcdb
+  toml:
+    github: crystal-community/toml.cr
+    branch: master
+  bcdb:
+    github: crystaluniverse/bcdb-client
+  jwt:
+    github: crystal-community/jwt
+  clim:
+    github: at-grandpa/clim
+    version: 0.14.0
+  mnemonic:
+    github: crystaluniverse/mnemonic.cr
+  swagger:
+    github: icyleaf/swagger
+
+crystal: 0.35.1
+
+license: MIT

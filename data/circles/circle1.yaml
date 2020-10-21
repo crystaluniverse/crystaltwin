@@ -1,0 +1,29 @@
+id : 0
+info:
+  tid: ''
+  id: ''
+  name: ''
+  title: This is the title of a circle
+  alias:
+    - ''
+  type: ''
+  tags: ''
+  members: []
+  children: []
+  description: |
+
+  remarks: |
+
+  acl_id: 0
+
+links:
+  linkedin: ''
+  websites: []
+  facebook: ''
+  telegram: ''
+profile:
+  intro_video: ''
+  intro_text_purpose: |
+        this is a multi line text
+        can be used to describe profile of circle from human perspective
+        
