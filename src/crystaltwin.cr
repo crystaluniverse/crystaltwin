@@ -10,7 +10,6 @@ require "./server"
 require "./macros"
 
 module CrystalTwin
-
   # Temporary class to load json response from explorer when resoliving threebot ID into name
   # Only used if --threebot-name is not provided
   class ThreebotUser
@@ -152,26 +151,71 @@ module CrystalTwin
       sub "load" do
         desc "load yaml files into database. Run crystaltwin load --help for more info"
         usage "crystaltwin load [options]"
-        option "-w", "--overwrite",  type: String, desc: "Overwrite if exists"
-        option "-o", "--only",  type: String, desc: "load only this certain file"
-        option "-d DIR", "--dir=DDIR",  type: String, desc: "load files from this dir"
-        option "-m MODEL", "--model=MODEL",  type: String, desc: "load only all files for this model"
+        option "--overwrite",  type: String, desc: "Overwrite if exists"
+        option "--only",  type: String, desc: "load only this certain file"
+        option "--dir=DDIR",  type: String, desc: "load files from this dir"
+        option "--model=MODEL",  type: String, desc: "load only all files for this model"
+        option "--dbsocket=SOCKET", type: String, desc: "Bcdb unix socket file", default: "/tmp/bcdb.sock"
+        option "--dbnamespace", type: String, desc: "Bcdb namespace", default: "crystaltwin"
 
         run do |opts, args|
-          puts "Fake Crystal tool!!"
+          cmd_load = CrystalTwin::Cmd::Load.new
+          overwrite_flag = false
+          cmd_load.config_db(opts.dbsocket, opts.dbnamespace)
+          
+          if opts.overwrite
+            overwrite_flag = true
+          end
+
+          if opts.only
+            # ToDO later
+          end
+
+          if opts.dir
+            cmd_load.set_data_path(opts.dir.to_s)
+          end
+
+          if opts.model
+            cmd_load.set_model(opts.model.to_s)
+          end
+
+          cmd_load.load(overwrite_flag)
         end
       end
 
       sub "dumps" do
         desc "dump yaml files into data directory. Run crystaltwin dump --help for more info"
-        usage "crystaltwin load [options]"
-        option "-w", "--overwrite",  type: String, desc: "Overwrite if exists"
-        option "-d DIR", "--dir=DDIR",  type: String, desc: "dumo files into this dir"
-        option "-m MODEL", "--model=MODEL",  type: String, desc: "dump only files for this model"
-        option "-o ID", "--object=ID",  type: String, desc: "dump only this object"
+        usage "crystaltwin dump [options]"
+        option "--overwrite",  type: String, desc: "Overwrite if exists"
+        option "--dir=DDIR",  type: String, desc: "dumo files into this dir"
+        option "--model=MODEL",  type: String, desc: "dump only files for this model"
+        option "--object=ID",  type: String, desc: "dump only this object"
+        option "--dbsocket=SOCKET", type: String, desc: "Bcdb unix socket file", default: "/tmp/bcdb.sock"
+        option "--dbnamespace", type: String, desc: "Bcdb namespace", default: "crystaltwin"
+
 
         run do |opts, args|
-          puts "Fake Crystal tool!!"
+          cmd_dump = CrystalTwin::Cmd::Dump.new
+          overwrite_flag = false
+          cmd_dump.config_db(opts.dbsocket, opts.dbnamespace)
+          
+          if opts.overwrite
+            overwrite_flag = true
+          end
+
+          if opts.object
+            # ToDO later
+          end
+
+          if opts.dir
+            cmd_dump.set_data_path(opts.dir.to_s)
+          end
+
+          if opts.model
+            cmd_dump.set_model(opts.model.to_s)
+          end
+
+          cmd_dump.dump(overwrite_flag)
         end
       end
     end

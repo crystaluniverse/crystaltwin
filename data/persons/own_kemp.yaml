@@ -1,39 +1,47 @@
-id : 0
+---
+id: 0
 info:
-  tid: ''
+  tid: ""
   full_name: Owen Kemp
-  countries:
-    - Austria
-  cities:
-    - Vienna
-  comment: ''
+  comment: ""
+  description: ""
+  tags: []
   aliases: []
-  tags: ''
-  description: ''
-  remarks: ''
+  remarks: ""
+  countries:
+  - Austria
+  cities:
+  - Vienna
+  db_tags:
+    model: crystaltwin::models::person
+    '[]': ""
 contactinfo:
-  email: ''
-  tel: ''
-  telegram: ''
-  skype: ''
+  email: ""
+  telephone: ""
+  telegram: ""
+  skype: ""
 address:
-  city: ''
-  housenr: ''
-  postalcode: ''
-  country: ''
+  city: ""
+  houseno: ""
+  postalcode: ""
+  country: ""
 links:
-  linkedin: 'https://www.linkedin.com/in/aaaaa/'
+  linkedin: https://www.linkedin.com/in/aaaaa/
   websites:
-    - 'https://www.artichoke-computing.com/#'
-  facebook: ''
-  telegram: ''
+  - https://www.artichoke-computing.com/#
+  facebook: ""
+  telegram: ""
 profile:
-  intro_video: ''
-  intro_text_purpose: |
-        this is a multi line text
-        can be used to describe profile from human perspective
-        optional: can be part of the profile.md file
-        
-  intro_text_experience: |
-        optional experience...
-        can be part of the profile.md file
+  intro_video: ""
+  intro_text_purpose: 'this is a multi line text
+
+    can be used to describe profile from human perspective
+
+    optional: can be part of the profile.md file
+
+    '
+  intro_text_experience: 'optional experience...
+
+    can be part of the profile.md file
+
+    '

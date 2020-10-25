@@ -1,16 +1,21 @@
+---
+id: 2
 info:
-  tid: ''
-  name: ''
+  tid: ""
+  name: ""
+  description: ""
   title: This is the title of a topic
-  aliases: []
+  type: ""
   tags: []
-  description: ''
+  db_tags:
+    model: crystaltwin::models::topic
+    '[]': ""
 links:
-  linkedin: ''
+  linkedin: ""
   websites: []
-  facebook: ''
-  telegram: ''
+  facebook: ""
+  telegram: ""
 git:
-  url: ''
-  branch: ''
-  path: ''
+  url: ""
+  branch: ""
+  path: ""

@@ -1,22 +1,23 @@
+---
+id: 3
 info:
-  tid: ''
-  uid: ''
+  tid: ""
+  uid: ""
   title: This is the name of a circle
-  type: ''
-  tags: ''
+  aliases: []
+  tags: []
+  db_tags:
+    model: crystaltwin::models::epic
+    '[]': ""
 links:
-  linkedin: ''
+  linkedin: ""
   websites: []
-  facebook: ''
-  telegram: ''
+  facebook: ""
+  telegram: ""
 profile:
-  intro_video: ''
-  intro_text_purpose: |2-
-        this is a multi line text
-        can be used to describe profile from human perspective
-        optional: can be part of the profile.md file
-        
-  intro_text_experience: |2-
-        optional experience...
-        can be part of the profile.md file
-        
+  intro_video: ""
+  intro_text_purpose: "    this is a multi line text\n    can be used to describe
+    profile from human perspective\n    optional: can be part of the profile.md file\n
+    \   "
+  intro_text_experience: "    optional experience...\n    can be part of the profile.md
+    file\n    "

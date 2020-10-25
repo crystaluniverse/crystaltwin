@@ -1,19 +1,20 @@
+---
+id: 4
 info:
-  tid: ''
-  name: ''
+  tid: ""
+  name: ""
   title: Title of a site
   aliases: []
   tags: []
+  db_tags:
+    model: crystaltwin::models::site
+    '[]': ""
 links:
-  linkedin: ''
+  linkedin: ""
   websites: []
-  facebook: ''
-  telegram: ''
-
+  facebook: ""
+  telegram: ""
 topic_ids:
-      - 'kristof.3bot:mytopic1'
-
-filter:
-  include:
-    - 'kristof.3bot:ourambassadors.vienna'
-  exclude: []
+- kristof.3bot:mytopic1
+include: []
+exclude: []

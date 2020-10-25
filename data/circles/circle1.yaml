@@ -1,29 +1,30 @@
-id : 0
+---
+id: 1
 info:
-  tid: ''
-  id: ''
-  name: ''
+  tid: ""
+  name: ""
+  description: ""
   title: This is the title of a circle
-  alias:
-    - ''
-  type: ''
-  tags: ''
+  aliases: []
+  type: ""
+  tags: []
   members: []
   children: []
-  description: |
-
-  remarks: |
-
+  remarks: ""
   acl_id: 0
-
+  db_tags:
+    model: crystaltwin::models::circle
+    '[]': ""
 links:
-  linkedin: ''
+  linkedin: ""
   websites: []
-  facebook: ''
-  telegram: ''
+  facebook: ""
+  telegram: ""
 profile:
-  intro_video: ''
-  intro_text_purpose: |
-        this is a multi line text
-        can be used to describe profile of circle from human perspective
-        
+  intro_video: ""
+  intro_text_purpose: 'this is a multi line text
+
+    can be used to describe profile of circle from human perspective
+
+    '
+  intro_text_experience: ""
