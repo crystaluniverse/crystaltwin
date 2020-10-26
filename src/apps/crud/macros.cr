@@ -19,14 +19,14 @@ module CrystalTwin::Macros
             end
 
             CrystalTwin::Config.models.each do |model|
-                prefix = "/api/#{model.basename}s/"
+                prefix = "/api/#{model.basename}s"
                 
                 # get /api/{model}s (list)
                 get prefix do |env|
                     model.list.to_json
                 end
                 
-                get "#{prefix}:id" do |env|
+                get "#{prefix}/:id" do |env|
                     begin
                         model.get(env.params.url["id"].to_u64).to_json
                     rescue Bcdb::NotFoundError
@@ -34,7 +34,7 @@ module CrystalTwin::Macros
                     end
                 end
                 
-                delete "#{prefix}:id" do |env|
+                delete "#{prefix}/:id" do |env|
                     begin
                         model.delete(env.params.url["id"].to_u64)
                     rescue Bcdb::NotFoundError
@@ -51,7 +51,7 @@ module CrystalTwin::Macros
                     end
                 end
                 
-                put "#{prefix}:id" do |env|
+                put "#{prefix}/:id" do |env|
                     obj = model.from_json(env.params.json.to_json)
                     if obj.id == 0
                         halt env, status_code: 409, response: %({"error": "Invalid object ID"})
@@ -70,14 +70,14 @@ module CrystalTwin::Macros
                         Swagger::Response.new("200", "Success response")
                     ]),
                     
-                    Swagger::Action.new("get", "#{prefix}{id}", description: "Get #{model.basename} by id", parameters: [
+                    Swagger::Action.new("get", "#{prefix}/{id}", description: "Get #{model.basename} by id", parameters: [
                         Swagger::Parameter.new("id", "path")
                     ], responses: [
                         Swagger::Response.new("200", "Success response"),
                         Swagger::Response.new("404", "Not found")
                     ], authorization: false),
 
-                    Swagger::Action.new("put", "#{prefix}{id}", description: "Update #{model.basename} by id", parameters: [
+                    Swagger::Action.new("put", "#{prefix}/{id}", description: "Update #{model.basename} by id", parameters: [
                         Swagger::Parameter.new("id", "path")
                     ],
                     request: Swagger::Request.new([
@@ -97,7 +97,7 @@ module CrystalTwin::Macros
                         Swagger::Response.new("401", "Unauthorizated")
                     ], authorization: false),
 
-                    Swagger::Action.new("delete", "#{prefix}{id}", description: "Delete #{model.basename} by id", parameters: [
+                    Swagger::Action.new("delete", "#{prefix}/{id}", description: "Delete #{model.basename} by id", parameters: [
                         Swagger::Parameter.new("id", "path")
                     ], responses: [
                         Swagger::Response.new("200", "Success response"),
