@@ -91,8 +91,8 @@ abstract class CrystalTwin::Models::Model < CrystalTwin::Models::Parent
                 self.id = db.put(self.to_yaml, tags)
                 cache.set(self.fullname, self.id.not_nil!, self)
             else # update
-                cache.set(self.fullname, self.id.not_nil!, self)
                 db.update(self.id.not_nil!, self.to_yaml, tags)
+                cache.set(self.fullname, self.id.not_nil!, self)
             end
     end
 
