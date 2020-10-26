@@ -12,6 +12,12 @@ module CrystalTwin::Macros
         # put /api/circles/:id (update)
         # delete /api/circles/:id (delete)
         macro init
+
+            # all responses coming from /api/* are json
+            before_all "/api/*" do |env|
+                env.response.content_type = "application/json"
+            end
+
             CrystalTwin::Config.models.each do |model|
                 prefix = "/api/#{model.basename}s/"
                 
@@ -64,26 +70,34 @@ module CrystalTwin::Macros
                         Swagger::Response.new("200", "Success response")
                     ]),
                     
-                    Swagger::Action.new("get", "#{prefix}/{id}", description: "Get #{model.basename} by id", parameters: [
+                    Swagger::Action.new("get", "#{prefix}{id}", description: "Get #{model.basename} by id", parameters: [
                         Swagger::Parameter.new("id", "path")
                     ], responses: [
                         Swagger::Response.new("200", "Success response"),
                         Swagger::Response.new("404", "Not found")
                     ], authorization: false),
 
-                    Swagger::Action.new("put", "#{prefix}/{id}", description: "Update #{model.basename} by id", parameters: [
+                    Swagger::Action.new("put", "#{prefix}{id}", description: "Update #{model.basename} by id", parameters: [
                         Swagger::Parameter.new("id", "path")
-                    ], responses: [
+                    ],
+                    request: Swagger::Request.new([
+                        Swagger::Property.new("#{capitalmodelname}", required: true, description: "#{capitalmodelname} object"),
+                    ], "#{capitalmodelname} Object", "application/json"),
+                    responses: [
                         Swagger::Response.new("200", "Success response"),
                         Swagger::Response.new("404", "Not found")
                     ], authorization: false),
                     
-                    Swagger::Action.new("post", "#{prefix}", description: "Create #{capitalmodelname}", responses: [
+                    Swagger::Action.new("post", "#{prefix}", description: "Create #{capitalmodelname}",
+                    request: Swagger::Request.new([
+                        Swagger::Property.new("#{capitalmodelname}", required: true, description: "#{capitalmodelname} object"),
+                    ], "#{capitalmodelname} Object", "application/json"),
+                    responses: [
                         Swagger::Response.new("201", "Return #{model.basename} resource after created"),
                         Swagger::Response.new("401", "Unauthorizated")
                     ], authorization: false),
 
-                    Swagger::Action.new("delete", "#{prefix}/{id}", description: "Delete #{model.basename} by id", parameters: [
+                    Swagger::Action.new("delete", "#{prefix}{id}", description: "Delete #{model.basename} by id", parameters: [
                         Swagger::Parameter.new("id", "path")
                     ], responses: [
                         Swagger::Response.new("200", "Success response"),
