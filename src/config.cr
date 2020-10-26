@@ -8,7 +8,7 @@ require "./apps/models"
 
 APPS = {{CrystalTwin::App.subclasses}}
 MODELS = {{CrystalTwin::Models::Model.subclasses}}
-
+SUBMODELS = {{CrystalTwin::Models::SubModel.subclasses}}
 
 class CrystalTwin::Config
     # Threebot info
@@ -46,7 +46,10 @@ class CrystalTwin::Config
 
     # Models
     @@models = []of CrystalTwin::Models::Model
-    
+    @@submodels = []of CrystalTwin::Models::SubModel
+    @@model_names = [] of String
+    @@submodel_names = [] of String
+   
     # Threebot info
     
     ## set crystal twin threebot user id
@@ -280,8 +283,23 @@ class CrystalTwin::Config
 
     # Models
     
-    ## List all models in the system
+    ## List all main models in the system
     def self.models
         MODELS
+    end
+
+    ## List all sub models in the system
+    def self.submodels
+        SUBMODELS
+    end
+
+    ## List all main model names
+    def self.model_names
+        self.models.map {|model| model.fullname}
+    end
+
+    ## List all sub model names
+    def self.submodel_names
+        self.submodels.map {|model|model.fullname}
     end
 end
