@@ -83,7 +83,6 @@ abstract class CrystalTwin::Models::Model < CrystalTwin::Models::Parent
     # Save/update object in bcdb, add to cache as well
         def save
             tags = {"model" => self.fullname}.merge(self.indexes)
-            pp! tags
             db = CrystalTwin::Config.db
             cache = CrystalTwin::Config.cache
             
