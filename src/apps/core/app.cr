@@ -1,13 +1,14 @@
 require "./config"
+require "./macros"
 require "../app"
 
 before_all "/v3/*" do |env|
     env.response.headers["Access-Control-Allow-Origin"] = "*"
 end
 
-
-class CrystalTwin::App::OpenAPI < CrystalTwin::App
+class CrystalTwin::App::Core < CrystalTwin::App
     def  initialize
+        # Initialize swagger
         CrystalTwin::Config.swagger.add(Swagger::Server.new("http://localhost:#{CrystalTwin::Config.port}/", "Alias Name", [
             Swagger::Server::Variable.new("port", "#{CrystalTwin::Config.port}", ["#{CrystalTwin::Config.port}"], "API port"),
             ]))
@@ -23,6 +24,9 @@ class CrystalTwin::App::OpenAPI < CrystalTwin::App
         
                 add_handler swagger_api_handler
                 add_handler swagger_web_handler
+        
+        # generate all basic crud endpoints as well as their swagger api docs
+        # for all models in the system
+        CrystalTwin::Macros::Crud.init
     end
 end
-
