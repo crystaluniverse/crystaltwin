@@ -23,11 +23,17 @@ before_all "/*" do |env|
     excluded << "/threebot/login/url"
     excluded << "/api"
     excluded << "/v3/swagger.json"
+    excluded << "/"
 
     found = false
 
     excluded.each do |path|
-        if env.request.resource.starts_with?(path)
+        if path == "/"
+            if path == env.request.resource
+                found = true
+                break
+            end
+        elsif env.request.resource.starts_with?(path)
             found = true
             break
         end

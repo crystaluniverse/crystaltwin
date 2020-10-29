@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title> CrystalTwin </title>
+    <link rel="stylesheet" href="/landing_page/css/style.css"/>
+</head>
+
+<body>
+    <h1>Welcome <%= name %> to CrystalTwin</h1>
+    <p>The ultimate digital avatar</p>
+    <%- if !is_connected -%>
+    <h2 style="color: red">You are not connected, Please login</h2>
+    <form method="get" action="/">
+        <input style="background: green" type="submit" value="Login use 3bot" formaction="/threebot/login">
+    </form>
+    <%- else -%>
+    <h2 style="color: green">You are connected, Enjoy!</h2>
+    <%- end -%>
+</body>
+</html>

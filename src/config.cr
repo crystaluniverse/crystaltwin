@@ -21,7 +21,7 @@ class CrystalTwin::Config
     # Environment
     @@environment = "production"
     @@explorer = "https://explorer.devnet.grid.tf/explorer"
-    @@threeboturl = "https://login.staging.jimber.org"
+    @@threeboturl = "https://login.threefold.me"
     @@openkycurl = "https://openkyc.staging.jimber.org/verification/verify-sei"
     
     # Database
