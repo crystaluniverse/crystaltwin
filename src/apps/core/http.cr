@@ -21,3 +21,9 @@ get "/" do |env|
         render "public/landing_page/index.ecr"
     end
 end
+
+get "/logout" do |env|
+    env.session.string("username", "")
+    env.session.string("email", "")
+    env.redirect "/"
+end
