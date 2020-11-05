@@ -35,7 +35,7 @@ module CrystalTwin
       option "--key=KEYFILE", type: String, desc: "SSL Key file", default: ""
       option "--cert=CERTFILE", type: String, desc: "SSL Cert file", default: ""
       option "--cookie-name=COOKIENAME", type: String, desc: "Cookie name", default: "crystaltwin"
-      option "--session-expiration=HOURS", type: Int32, desc: "Session expiration in hours", default: 720
+      option "--session-expiration=HOURS", type: Int32, desc: "Session expiration in hours", default: 2592000 # 1 month
       option "--threebot-id=ID", type: Int32, desc: "3 bot ID", default: -1
       option "--threebot-name=USERNAME", type: String, desc: "3 bot Username", default: ""
       option "--threebot-url=URL", type: String, desc: "3 bot connect URL", default: ""
@@ -115,10 +115,12 @@ module CrystalTwin
           else
             user = ThreebotUser.from_json(response.body)
             threebotname = user.name
-            CrystalTwin::Config.set_username threebotname
-            
+                        
           end
         end
+
+        # set username to be threebotname, either provided one or fetched one
+        CrystalTwin::Config.set_username threebotname
 
         # Set Database & db session engine connection 
         CrystalTwin::Config.set_db socketfile: opts.dbsocket, namespace: opts.dbnamespace

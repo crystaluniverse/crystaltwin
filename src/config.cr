@@ -21,8 +21,8 @@ class CrystalTwin::Config
     # Environment
     @@environment = "production"
     @@explorer = "https://explorer.devnet.grid.tf/explorer"
-    @@threeboturl = "https://login.staging.jimber.org"
-    @@openkycurl = "https://openkyc.staging.jimber.org/verification/verify-sei"
+    @@threeboturl = "https://login.threefold.me"
+    @@openkycurl = "https://openkyc.live/verification/verify-sei"
     
     # Database
     @@socketfile = "/tmp/bcdb.sock"
@@ -37,7 +37,7 @@ class CrystalTwin::Config
     @@sslkeyfile = ""
     @@sslcertfile = ""
     @@sessionsecret = "22b51a8e38564939a5285404793ac1af" # only for development, in production user is required to pass secret
-    @@sessionexpiration = 720 # hours
+    @@sessionexpiration = 2592000 # seconds (1 month)
     @@cookiename = "crystaltwin"
     @@sessionengine : Kemal::Session::BcdbEngine? = nil
 
@@ -108,7 +108,7 @@ class CrystalTwin::Config
     def self.set_environment(environment)
         @@environment = environment
         if environment == "production"
-            @@explorer = "https://explorer.devnet.grid.tf/explorer"
+            @@explorer = "https://explorer.grid.tf/explorer"
             @@threeboturl = "https://login.threefold.me"
             @@openkycurl = "https://openkyc.live/verification/verify-sei"
         end

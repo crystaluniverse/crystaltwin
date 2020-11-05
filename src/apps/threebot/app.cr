@@ -23,11 +23,12 @@ before_all "/*" do |env|
     excluded << "/threebot/login/url"
     excluded << "/api"
     excluded << "/v3/swagger.json"
+    excluded << "/"
 
     found = false
 
     excluded.each do |path|
-        if env.request.resource.starts_with?(path)
+        if env.request.resource.starts_with?(path) || env.request.resource == path
             found = true
             break
         end
@@ -51,6 +52,6 @@ def threebot_login(env, email, username)
     else
         env.session.string("username", username)
         env.session.string("email", email)
-        "SUCCESS :: #{username}"
+        env.redirect "/"
     end
 end
