@@ -28,7 +28,7 @@ before_all "/*" do |env|
     found = false
 
     excluded.each do |path|
-        if env.request.resource.starts_with?(path) || env.request.resource == path
+        if env.request.resource.starts_with?(path) || env.request.resource == "/"
             found = true
             break
         end
