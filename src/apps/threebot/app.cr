@@ -23,7 +23,6 @@ before_all "/*" do |env|
     excluded << "/threebot/login/url"
     excluded << "/api"
     excluded << "/v3/swagger.json"
-    excluded << "/"
 
     found = false
 
