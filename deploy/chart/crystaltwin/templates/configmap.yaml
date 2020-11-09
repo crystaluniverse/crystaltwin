@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "env-config"
+data:
+  threebot_id: {{ quote .Values.env.threebot_id }}
+  explorer: {{ quote .Values.env.explorer  }}
+  seed: {{ .Values.env.seed | trim }}
