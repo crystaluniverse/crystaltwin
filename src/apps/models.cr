@@ -81,18 +81,18 @@ abstract class CrystalTwin::Models::Model < CrystalTwin::Models::Parent
         return @{{prop.id}}
     end
     # Save/update object in bcdb, add to cache as well
-        def save
-            tags = {"model" => self.fullname}.merge(self.indexes)
-            db = CrystalTwin::Config.db
-            cache = CrystalTwin::Config.cache
-            
-            if self.id == 0 # new
-                self.id = db.put(self.to_yaml, tags)
-                cache.set(self.fullname, self.id.not_nil!, self)
-            else # update
-                db.update(self.id.not_nil!, self.to_yaml, tags)
-                cache.set(self.fullname, self.id.not_nil!, self)
-            end
+    def save
+        tags = {"model" => self.fullname}.merge(self.indexes)
+        db = CrystalTwin::Config.db
+        cache = CrystalTwin::Config.cache
+        
+        if self.id == 0 # new
+            self.id = db.put(self.to_yaml, tags)
+            cache.set(self.fullname, self.id.not_nil!, self)
+        else # update
+            db.update(self.id.not_nil!, self.to_yaml, tags)
+            cache.set(self.fullname, self.id.not_nil!, self)
+        end
     end
 
 
